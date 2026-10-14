@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"strings"
 	"time"
 )
 
@@ -11,12 +10,18 @@ func Philosopher(id, iteration int) {
 	time_to_eat := 30   
 
 	
-	fmt.Printf("%s T%d\n", strings.Repeat(" ", id*6), iteration) 
-	time.Sleep(time.Duration(time_to_think) * time.Millisecond)
+	   for s := 1; s <= id*6; s++ {
+          fmt.Printf(" ")
+          }
+     fmt.Printf(" T%d\n", iteration) 
+     time.Sleep(time.Duration(time_to_think) * time.Millisecond)
 
 
-	fmt.Printf("%s E%d\n", strings.Repeat(" ", id*6), iteration)
-	time.Sleep(time.Duration(time_to_eat) * time.Millisecond)
+	for s := 1; s <= id*6; s++ {
+          fmt.Printf(" ")
+          }
+     fmt.Printf(" E%d\n", iteration) 
+     time.Sleep(time.Duration(time_to_eat) * time.Millisecond)
 }
 
 func main() {

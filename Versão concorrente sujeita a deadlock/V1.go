@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"strings"
 	"sync"
 	"time"
 )
@@ -17,8 +16,11 @@ func Philosopher(id, rounds int, wg *sync.WaitGroup) {
 
 	for iteration := 1; iteration <= rounds; iteration++ {
 		
-		fmt.Printf("%s T%d\n", strings.Repeat(" ", id*6), iteration) 
-		time.Sleep(time.Duration(time_to_think) * time.Millisecond)
+		for s := 1; s <= id*6; s++ {
+          fmt.Printf(" ")
+          }
+     fmt.Printf(" T%d\n", iteration) 
+     time.Sleep(time.Duration(time_to_think) * time.Millisecond)
 
 	
 		forks[left].Lock()
@@ -26,9 +28,11 @@ func Philosopher(id, rounds int, wg *sync.WaitGroup) {
 		time.Sleep(10 * time.Millisecond) 
 		forks[right].Lock()
 
-	
-		fmt.Printf("%s E%d\n", strings.Repeat(" ", id*6), iteration) 
-		time.Sleep(time.Duration(time_to_eat) * time.Millisecond)
+	for s := 1; s <= id*6; s++ {
+          fmt.Printf(" ")
+          }
+     fmt.Printf(" E%d\n", iteration) 
+     time.Sleep(time.Duration(time_to_eat) * time.Millisecond)
 
 	
 		forks[right].Unlock()
